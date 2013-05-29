@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block page %}
+<div class="container">
+  <div id="content" class="row-fluid">
+  <p><a id="link" href="{{ bookmark['url'] }}">{{ bookmark['url'] }}</a></p>
+  {% if bookmark['tags'] %}
+    <p>
+      {% for tag in bookmark['tags'] %}
+        <a class="tag" href="{{ url_for('index') }}?tag={{ tag['name'] }}">{{ tag['name'] }}</a>
+      {% endfor %}
+    </p>
+  {% else %}
+  {% endif %}
+  <p>{{ bookmark['description'] }}</p>
+  {% if current_user.is_authenticated() %}
+  <a class="btn btn-mini" href="{{ url_for('bookmark_edit', id=bookmark['id']) }}">Edit</a>
+  <a class="btn btn-mini" href="{{ url_for('bookmark_delete', id=bookmark['id']) }}">Delete</a>
+  {% endif %}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block page %}
+<div class="container">
+  {% for bookmark in bookmarks %}
+  {% if current_user.is_authenticated() or bookmark['public'] %}
+  <div class="row-fluid">
+    <div class="span4"><a target="_blank" href="{{ bookmark['url'] }}">
+      {{ bookmark['url']|truncate(40,true,"..") }}</a></div>
+    {% if bookmark['description'] %}
+      <div class="span4">
+        {{ bookmark['description']|truncate(100,false,"..")|nl2br }}</div>
+    {% else %}
+      <div class="span4 hidden-phone"><!-- blank --></div>
+    {% endif %}
+    {% if bookmark['tags'] %}
+      <div class="span2">
+        {% for tag in bookmark['tags'] %}
+          <a class="tag" href="?tag={{ tag['name'] }}">{{ tag['name'] }}</a>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="span2 hidden-phone"><!-- blank --></div>
+    {% endif %}
+    <div class="span2 btn-group">
+      <a class="btn btn-mini" href="{{ url_for('bookmark_show', id=bookmark['id']) }}">Details</a>
+      {% if current_user.is_authenticated() %}
+        <a class="btn btn-mini" href="{{ url_for('bookmark_edit', id=bookmark['id']) }}">Edit</a>
+        <a class="btn btn-mini" href="{{ url_for('bookmark_delete', id=bookmark['id']) }}">Delete</a>
+      {% endif %}
+    </div>
+  </div>
+  <hr class="visible-phone" />
+  {% endif %}
+  {% endfor %}
+</div>
+{% endblock %}

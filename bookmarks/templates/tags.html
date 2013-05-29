@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block page %}
+<div class="container">
+  {% for tag in tags %}
+  <div class="row-fluid">
+    <div class="span3"><a class="tag" href="{{ url_for('index') }}?tag={{ tag['name'] }}">
+      {{ tag['name'] }}</a></div>
+    <div class="span2 btn-group">
+      <a class="btn btn-mini" href="{{ url_for('tag_edit', id=tag['id']) }}">Edit</a>
+      <a class="btn btn-mini" href="{{ url_for('tag_delete', id=tag['id']) }}">Delete</a>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

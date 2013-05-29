@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block page %}
+{% from '_macros.html' import render_field %}
+<div class="container">
+  <form class="form-horizontal" method="post">
+    {{ form.hidden_tag() }}
+    {{ render_field(form.url, class="input-xxlarge") }}
+    {{ render_field(form.description, class="input-xxlarge") }}
+    {{ render_field(form.tags, class="chzn-select") }}
+    {{ render_field(form.public) }}
+    <div class="control-group">
+      <div class="controls">
+        <input type="submit" class="btn" value="Add" />
+      </div>
+    </div>
+  </form>
+</div>
+<script>
+$('.chzn-select').chosen();
+$('#url').focus();
+</script>
+{% endblock %}

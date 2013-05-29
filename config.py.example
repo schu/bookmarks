@@ -1,0 +1,13 @@
+
+SITE_NAME = 'bookmarks'
+
+# `pwgen -y 100`
+#SECRET_KEY = 'TODO - INSERT SECRET KEY'
+
+DEBUG = False
+
+# SQLite
+#SQLALCHEMY_DATABASE_URI = 'sqlite:////tmp/bookmarks-demo.db'
+
+# PostgreSQL
+#SQLALCHEMY_DATABASE_URI = 'postgres://username:password@host/database'

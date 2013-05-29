@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block page %}
+<div class="container">
+  <form class="form-inline" method="post">
+    {{ form.hidden_tag() }}
+    Delete <a href="{{ url_for('bookmark_show', id=bookmark['id']) }}">{{ bookmark['url'] }}</a>?
+    <input type="submit" class="btn btn-small" value="Yes!" />
+    <a href="{{ url_for('bookmark_show', id=bookmark['id']) }}">No</p>
+  </form>
+</div>
+{% endblock %}

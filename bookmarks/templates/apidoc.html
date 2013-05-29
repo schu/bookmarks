@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+{% block page %}
+<div class="container">
+  <h2>API</h2>
+  <p>TODO</p>
+  <h3>Example</h3>
+  <p>Using <a href="http://python-requests.org">Requests: HTTP for Humans</a>.</p>
+  <pre>
+#!/usr/bin/env python2
+import json
+import requests
+r = requests.get('{{ request.url_root }}api/bookmark/1', auth=('username', 'password'))
+print json.dumps(r.text)
+</pre>
+  <p>r.status_code == 200</p>
+  <pre>
+{
+  "url": "http://subversion.apache.org",
+  "id": 1,
+  "description": "Apache Subversion - \"Enterprise-class centralized version control for the masses\".",
+  "public": true,
+  "tags": [
+    {
+      "id": 1,
+      "name": "svn"
+    }
+  ]
+}
+</pre>
+  <p>r.status_code == 401</p>
+  <pre>
+{
+  "message": "Access denied"
+}
+</pre>
+  <h3>Bookmarks</h3>
+  <div class="row-fluid">
+    <div class="span4">
+      <p>GET</p>
+    </div>
+    <div class="span8">
+      <pre>
+$ curl -u 'username:password' {{ request.url_root }}api/bookmarks
+</pre>
+    </div>
+  </div>
+  <div class="row-fluid">
+    <div class="span4">
+    </div>
+    <div class="span8">
+      <pre>
+$ curl -u 'username:password' {{ request.url_root }}api/bookmark/:id
+</pre>
+    </div>
+  </div>
+  <h3>Tags</h3>
+  <div class="row-fluid">
+    <div class="span4">
+      <p>GET</p>
+    </div>
+    <div class="span8">
+      <pre>
+$ curl -u 'username:password' {{ request.url_root }}api/tags
+</pre>
+    </div>
+  </div>
+  <div class="row-fluid">
+    <div class="span4">
+    </div>
+    <div class="span8">
+      <pre>
+$ curl -u 'username:password' {{ request.url_root }}api/tag/:id
+</pre>
+    </div>
+  </div>
+  <h3>Users</h3>
+  <div class="row-fluid">
+    <div class="span4">
+      <p>TODO</p>
+    </div>
+    <div class="span8">
+    </div>
+  </div>
+</div>
+{% endblock %}

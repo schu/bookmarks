@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block page %}
+{% from '_macros.html' import render_field %}
+<div class="container">
+  <form class="form-horizontal" method="post">
+    {{ form.hidden_tag() }}
+    {{ render_field(form.name, class="input-xxlarge") }}
+    <div class="control-group">
+      <div class="controls">
+        <input type="submit" class="btn" value="Add" />
+      </div>
+    </div>
+  </form>
+</div>
+<script>
+$('#name').focus();
+</script>
+{% endblock %}
