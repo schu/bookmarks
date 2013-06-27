@@ -19,14 +19,16 @@ class Bookmark(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     url = db.Column(db.String(2048), unique=True)
+    title = db.Column(db.String(1024))
     description = db.Column(db.Text)
     public = db.Column(db.Boolean, default=False)
     timestamp = db.Column(db.DateTime)
     t = db.relationship('Tag', secondary=bookmarks_tags_rel,
             backref=db.backref('bookmarks', lazy='select'))
 
-    def __init__(self, url, description='', tags=[], public=False):
+    def __init__(self, url, title, description='', tags=[], public=False):
         self.url = url
+        self.title = title
         self.description = description
         self.tags = tags
         self.public = public

@@ -5,6 +5,7 @@
   <form class="form-horizontal" method="post">
     {{ form.hidden_tag() }}
     {{ render_field(form.url, class="input-xxlarge") }}
+    {{ render_field(form.title, class="input-xxlarge") }}
     {{ render_field(form.description, class="input-xxlarge") }}
     {{ render_field(form.tags, class="chzn-select") }}
     {{ render_field(form.public) }}

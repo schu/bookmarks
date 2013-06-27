@@ -8,6 +8,7 @@ from flask.ext.wtf import (BooleanField, Form, Length, PasswordField,
 
 class BookmarkForm(Form):
     url = TextField("URL", [Required(), URL(require_tld=True)])
+    title = TextField("Title", [Required()])
     description = TextAreaField('Description')
     tags = SelectMultipleField('Tags')
     public = BooleanField('Public?')

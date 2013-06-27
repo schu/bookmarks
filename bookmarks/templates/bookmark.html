@@ -2,6 +2,7 @@
 {% block page %}
 <div class="container">
   <div id="content" class="row-fluid">
+  <h3>{{ bookmark['title'] }}</h3>
   <p><a id="link" href="{{ bookmark['url'] }}">{{ bookmark['url'] }}</a></p>
   {% if bookmark['tags'] %}
     <p>

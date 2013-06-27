@@ -74,6 +74,7 @@ def bookmark_new():
     if form.validate_on_submit():
         try:
             bookmark = Bookmark(form.url.data,
+                        form.title.data,
                         description=form.description.data,
                         tags=form.tags.data,
                         public=form.public.data)

@@ -6,12 +6,8 @@
   <div class="row-fluid">
     <div class="span4"><a target="_blank" href="{{ bookmark['url'] }}">
       {{ bookmark['url']|truncate(40,true,"..") }}</a></div>
-    {% if bookmark['description'] %}
-      <div class="span4">
-        {{ bookmark['description']|truncate(100,false,"..")|nl2br }}</div>
-    {% else %}
-      <div class="span4 hidden-phone"><!-- blank --></div>
-    {% endif %}
+    <div class="span4">
+      {{ bookmark['title']|truncate(100,false,"..") }}</div>
     {% if bookmark['tags'] %}
       <div class="span2">
         {% for tag in bookmark['tags'] %}
